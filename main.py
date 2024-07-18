@@ -1,6 +1,9 @@
 from flask import Flask, Response
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions  # Import for Chrome options
+import logging
+logger = logging.getLogger(__name__)
+
 
 app = Flask(__name__)
 
@@ -15,6 +18,8 @@ def selenium_task():
 
   # Perform the selenium task
   driver.get("https://www.cricbuzz.com/")
+  logger.info("Running task")
+  logger.info(st.text)
   
   st=driver.find_element("xpath",'//*[@id="cb-main-menu"]/a[2]')
   print(st.text)
